@@ -33,3 +33,27 @@ if [ -r "$ENV_DIR/INSTALL_KUBECTL" ]; then
         gcloud components install kubectl --quiet
     fi
 fi
+
+#!/bin/bash
+
+echo ".\n.\n.\n.\n.\n.\n.\n.\n.\n.\n"
+echo "STARTING THE BUILD SCRIPT"
+echo ".\n.\n.\n.\n.\n.\n.\n.\n.\n"
+echo "=========== here it comes ======================="
+echo "."
+echo "."
+echo "."
+
+# Authenticate GCP
+# pip install keyring keyrings.google-artifactregistry-auth
+gcloud auth activate-service-account --key-file=$GOOGLE_APPLICATION_CREDENTIALS
+
+# # Install pythonbq
+# pip install --no-build-isolation --index-url https://us-west2-python.pkg.dev/second-casing-278016/output-pypi/simple/ output-pythonbq==2.0.0
+
+echo "."
+echo "."
+echo "."
+
+echo "BUILD SCRIPT FINISHED"
+echo ".\n.\n.\n.\n.\n.\n.\n.\n.\n"
