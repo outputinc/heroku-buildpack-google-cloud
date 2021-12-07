@@ -42,4 +42,4 @@ if [ -r "$ENV_DIR/GOOGLE_CREDENTIALS" ]; then
 fi
 
 # Install pythonbq
-pip install --no-build-isolation --index-url https://us-west2-python.pkg.dev/second-casing-278016/output-pypi/simple/ output-pythonbq==2.0.0
+pip install --no-build-isolation --index-url https://us-west2-python.pkg.dev/second-casing-278016/output-pypi/simple/ output-pythonbq==2.0.1
