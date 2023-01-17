@@ -34,6 +34,9 @@ if [ -r "$ENV_DIR/INSTALL_KUBECTL" ]; then
     fi
 fi
 
+# Install python-google-keyring before logging in
+pip install keyring keyrings.google-artifactregistry-auth
+
 # Activate Service Account
 if [ -r "$ENV_DIR/GOOGLE_CREDENTIALS" ]; then
     GOOGLE_CREDENTIALS="$(cat "$ENV_DIR/GOOGLE_CREDENTIALS")"
@@ -42,4 +45,4 @@ if [ -r "$ENV_DIR/GOOGLE_CREDENTIALS" ]; then
 fi
 
 # Install pythonbq
-pip install --no-build-isolation --index-url https://us-west2-python.pkg.dev/second-casing-278016/output-pypi/simple/ output-pythonbq>=2.1.2
+pip install --no-build-isolation --extra-index-url https://us-west2-python.pkg.dev/second-casing-278016/output-pypi/simple/ output-pythonbq>=2.1.2
