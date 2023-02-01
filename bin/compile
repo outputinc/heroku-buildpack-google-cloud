@@ -38,11 +38,13 @@ fi
 pip install keyring keyrings.google-artifactregistry-auth
 
 # Activate Service Account
+CREDSFILE='/app/google-credentials.json'
 if [ -r "$ENV_DIR/GOOGLE_CREDENTIALS" ]; then
     GOOGLE_CREDENTIALS="$(cat "$ENV_DIR/GOOGLE_CREDENTIALS")"
-    echo $GOOGLE_CREDENTIALS | base64 -d > /app/google-credentials.json
-    gcloud auth activate-service-account --key-file /app/google-credentials.json
+    echo $GOOGLE_CREDENTIALS | base64 -d > "$CREDSFILE"
+    gcloud auth activate-service-account --key-file "$CREDSFILE"
+    export GOOGLE_APPLICATION_CREDENTIALS="$CREDSFILE"
 fi
 
 # Install pythonbq
-pip install --no-build-isolation --extra-index-url https://us-west2-python.pkg.dev/second-casing-278016/output-pypi/simple/ output-pythonbq>=2.1.2
+GOOGLE_APPLICATION_CREDENTIALS="$CREDSFILE" pip install --no-build-isolation --extra-index-url https://us-west2-python.pkg.dev/second-casing-278016/output-pypi/simple/ output-pythonbq>=2.1.0.post1
